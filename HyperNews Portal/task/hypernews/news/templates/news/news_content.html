@@ -1,0 +1,16 @@
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/base.css' %}">
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Movie</title>
+</head>
+<body>
+    <h2>{{title}}</h2>
+    <p>{{created | date:"Y-m-d H:i:s"}}</p>
+    <p>{{text}}</p>
+    <a target="_blank" href="/news/">Home</a>
+</body>
+</html>

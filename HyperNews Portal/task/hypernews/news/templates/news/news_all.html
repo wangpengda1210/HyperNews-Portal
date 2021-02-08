@@ -1,0 +1,32 @@
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/base.css' %}">
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>All News</title>
+</head>
+<body>
+    <h2>Hyper news</h2>
+
+    {% for time in time_dict|dictsortreversed:"created" %}
+        <h4>{{time.created | date:"Y-m-d"}}</h4>
+
+        <ul>
+            {% for news in time.value|dictsortreversed:"created" %}
+                <li><a href="/news/{{news.link}}/">{{news.title}}</a> </li>
+            {% endfor %}
+        </ul>
+
+    {% endfor %}
+
+    <form action="/news/" method="get">
+        {% csrf_token %}
+        <input name="q">
+        <button type="submit">Search</button>
+    </form>
+
+    <a href="/news/create/">Create News</a>
+</body>
+</html>
